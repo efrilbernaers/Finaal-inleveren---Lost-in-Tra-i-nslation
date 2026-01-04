@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homepage - Projectdocumentatie</title>
+
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/flexboxes.css">
+<link rel="stylesheet" href="assets/nav.css">
+<link rel="stylesheet" href="assets/typography.css">
+
+<style>
+/* Basis reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+body {
+    padding-top: 60px; /* hoogte van je navbar */
+}
+
+/* Container voor content */
+.container {
+    position: relative;
+    z-index: 10;
+    max-width: 80vw;
+    margin: 2rem auto;
+}
+
+/* Card container */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+/* Logo container fix */
+.logo-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 20;
+}
+
+/* Cookie popup fix */
+#cookieIcon, #cookiePopup {
+    z-index: 20;
+}
+  /* Lightbox overlay */
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 5px;
+  }
+
+  /* Cursor pointer voor klikbare afbeeldingen */
+  .flex-container img {
+    cursor: pointer;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+  }
+
+  /* Optioneel: wat ruimte tussen de tekst en afbeelding */
+  .flex-container {
+    margin-bottom: 30px;
+  }
+
+</style>
+</head>
+
+
+<body>
+<!-- Background layers -->
+<div id="constellation-bg"></div>
+
+
+<div class="navbar">
+    <div class="navbar-left">
+        <span class="project-title">Mijn projectdocumentatie</span>
+    </div>
+    <div class="navbar-right">
+        <a href="index.html" class="nav-item">
+            <span class=""></span> Startpagina
+        </a>
+
+        <div class="nav-item dropdown" id="weeksDropdown">
+            <span>Weken &darr;</span>
+            <div class="dropdown-content">
+                <a href="week1.html">Week 1</a>
+                <a href="week2.html">Week 2</a>
+                <a href="week3.html">Week 3</a>
+                <a href="week4.html">Week 4</a>
+                <a href="week5.html">Week 5</a>
+                <a href="week6.html">Week 6</a>
+                <a href="week7.html">Week 7</a>
+                <a href="week8.html">Week 8</a>
+                <a href="week9.html">Week 9</a>
+                <a href="week10.html">Week 10</a>
+                <a href="week11.html">Week 11</a>
+                <a href="week12.html">Week 12</a>
+                <a href="week13.html">Week 13</a>
+                <a href="week14.html">Week 14</a>
+            </div>
+        </div>
+
+        <a href="contact.html" class="nav-item">
+            <span class=""></span> Contacten
+        </a>
+    </div>
+</div>
+
+
+    <div class="container">
+        <div class="title">
+            Efril Bernaers projectdocumentatie PRTT1
+        </div>
+
+
+            <h1>lesweek 7: 06/11/2025</h1> 
+            <h2> Geen les: tussentijdseexamens</h2>
+            
+        <div class="blok">
+         <img src="public/htmlversie_LW7.png" alt="Mijn foto" width="500" height="300">
+         <div class="tekst">
+             <p>- Achtergrondfoto toegevoegd om eens iets nieuws te leren over coderen.</p>
+             <p>- Witte, transparante kader geplaatst onder de kaders met de weken. Verbeterde leesbaarheid van de tekst en de week-kaders, terwijl de achtergrondfoto zichtbaar blijft.</p>
+             <p>&rarr; De inhoud van de logbook blijft volledig, maar de presentatie en visuele structuur zijn geoptimaliseerd.</p>
+             <p>- Tweede versie geüpload via GitHub en Netlify.</p>
+             <p>- Tweede versie geüpload in Digitap</p>
+         </div>
+        </div>
+    </div>
+
+<div id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+    <!-- Logos -->
+<div class="logo-container">
+    <a href="https://app.netlify.com/projects/finaalprojectlostintrainslation/overview" target="_blank" class="logo">
+        <img src="https://www.netlify.com/v3/img/components/netlify-color-bg.svg" alt="Netlify Logo">
+    </a>
+    <a href="https://github.com/efrilbernaers/Finaal-inleveren---Lost-in-Tra-i-nslation" target="_blank" class="logo">
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo">
+    </a>
+</div>
+
+<!-- Scripts -->
+<script>
+// Cookie popup
+const cookieIcon = document.getElementById('cookieIcon');
+const cookiePopup = document.getElementById('cookiePopup');
+const essentialBtn = document.getElementById('essentialCookies');
+const allBtn = document.getElementById('allCookies');
+
+cookieIcon.addEventListener('click', () => {
+    cookiePopup.style.display = cookiePopup.style.display === 'block' ? 'none' : 'block';
+});
+
+function acceptCookies(type) {
+    localStorage.setItem('cookiesChoice', type);
+    cookiePopup.style.display = 'none';
+    alert(`Je hebt gekozen voor: ${type}`);
+}
+
+essentialBtn.addEventListener('click', () => acceptCookies('essentiële cookies'));
+allBtn.addEventListener('click', () => acceptCookies('alle cookies'));
+</script>
+
+<script>
+window.addEventListener('load', () => {
+    const choice = localStorage.getItem('cookiesChoice');
+    if(choice) cookiePopup.style.display = 'none';
+});
+
+
+
+  const dropdown = document.getElementById('weeksDropdown');
+  
+  dropdown.addEventListener('click', () => {
+    dropdown.classList.toggle('active');
+  });
+
+  // Optioneel: dropdown sluiten als je buiten klikt
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove('active');
+    }
+  });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const canvas = document.createElement("canvas");
+    canvas.className = "constellation-canvas";
+    document.getElementById("constellation-bg").appendChild(canvas);
+
+    const ctx = canvas.getContext("2d");
+
+    let w, h;
+    function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    const stars = [];
+    const starCount = 120; // more = denser sky
+
+    for (let i = 0; i < starCount; i++) {
+        stars.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.15,
+            vy: (Math.random() - 0.5) * 0.15,
+            radius: Math.random() * 2 + 1
+        });
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, w, h);
+
+        // draw stars
+        ctx.fillStyle = "rgba(147,197,253,0.8)";
+        stars.forEach(s => {
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+            ctx.fill();
+
+            s.x += s.vx;
+            s.y += s.vy;
+
+            if (s.x < 0 || s.x > w) s.vx *= -1;
+            if (s.y < 0 || s.y > h) s.vy *= -1;
+        });
+
+        // draw lines
+        ctx.strokeStyle = "rgba(147,197,253,0.15)";
+        ctx.lineWidth = 1;
+
+        for (let i = 0; i < stars.length; i++) {
+            for (let j = i + 1; j < stars.length; j++) {
+                const dx = stars[i].x - stars[j].x;
+                const dy = stars[i].y - stars[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 140) {
+                    ctx.beginPath();
+                    ctx.moveTo(stars[i].x, stars[i].y);
+                    ctx.lineTo(stars[j].x, stars[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+
+        requestAnimationFrame(draw);
+    }
+
+    draw();
+});
+</script>
+
+<script>
+  const images = document.querySelectorAll('.blok img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  images.forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  lightbox.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+</script>
+
+</div>
+</body>
+
+<footer>
+    <p style="text-align: center; color: white; padding: 10px;">&copy; 2025 Efril Bernaers - 1GMD1 Projectdocumentatie.</p>
+</footer>
+</html>
+
+
